@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Unity导出原生AAR嵌入原生
+title: Dissolve Shader
 date: 2024-04-02 15:53:53
-description: an example of a blog post with table of contents on a sidebar
+description: 溶解效果的记录
 tags: Shader
 categories: 
 giscus_comments: false
