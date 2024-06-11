@@ -130,7 +130,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: 博客 # blog_name will be displayed in your blog page
-blog_description: 日常技术积累
+blog_description: 整理下之前丢失的文章
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
