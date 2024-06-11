@@ -117,6 +117,7 @@ private static string GetFieldType(GameObject obj)
 识别预制体
 
 ```c#
+[MenuItem("Assets/Generate Code from Prefab", true)]
 private static bool ValidateGenerateCodeFromPrefab()
     {
         // 验证当前选中的对象是否是预制体
