@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 主程之路
-date: 2024-04-02 15:53:53
+date: 2019-06-07 15:53:53
 description: 相关文章导航用
 tags: 
 categories: distill formatting
