@@ -1,3 +1,16 @@
+---
+layout: post
+title: 视察卡牌
+date: 2025-03-15 14:33:46
+description: 卡通渲染随笔
+tags: Unity 
+categories: 
+giscus_comments: false
+related_posts: false
+toc:
+  sidebar: right
+---
+
 # 视察卡片效果
 * 早年间做大楼之间“假房间”的效果时候，用过视察的思路，现在在宝可梦卡牌上的效果非常不错，随即自己尝试实现
 * 根据入视角的角度算出深度，通过不同深度来实现图层不同
