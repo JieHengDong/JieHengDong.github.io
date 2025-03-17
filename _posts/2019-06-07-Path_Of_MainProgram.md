@@ -13,4 +13,4 @@ toc:
 
 ## 目录
 
-* Unity导出原生AAR嵌入原生 [Pinterest](https://jiehengdong.github.io/blog/2024/Unity_Export_Android_ARR/)
+* Unity导出原生AAR嵌入原生 [Pinterest](https://jiehengdong.github.io/blog/2024/Unity-Export-Android-AAR/)

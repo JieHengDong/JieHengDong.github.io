@@ -2,8 +2,8 @@
 layout: post
 title: 视察卡牌
 date: 2025-03-15 14:33:46
-description: 卡通渲染随笔
-tags: Unity 
+description: 视察卡牌效果
+tags: Shader 
 categories: 
 giscus_comments: false
 related_posts: false
