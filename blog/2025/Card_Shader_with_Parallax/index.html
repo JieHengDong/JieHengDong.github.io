@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd"> <html><body> <h1 id="视察卡片效果">视察卡片效果</h1> <ul> <li>早年间做大楼之间“假房间”的效果时候，用过视察的思路，现在在宝可梦卡牌上的效果非常不错，随即自己尝试实现</li> <li>根据入视角的角度算出深度，通过不同深度来实现图层不同</li> <li><mark>由于是一层一层采样所以图片需要带透明通道的PNG格式</mark></li> </ul> <h2 id="代码">代码</h2> <div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Shader</span> <span class="s">"Custom/CardShader"</span>
+<span class="p">{</span>
+    <span class="n">Properties</span>
+    <span class="p">{</span>
+        <span class="p">[</span><span class="n">Space</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
+        <span class="n">_FrameTexture</span><span class="p">(</span><span class="s">"FrameTexture"</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Black"</span><span class="p">{}</span>
+        
+        <span class="p">[</span><span class="n">Space</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
+        <span class="n">_ParallaxTexture1</span><span class="p">(</span><span class="s">"Parallax Texture1"</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Black"</span><span class="p">{}</span>
+        <span class="n">_ParallaxDepth1</span><span class="p">(</span><span class="s">"Parallax Depth1"</span><span class="p">,</span><span class="n">Float</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+        
+        <span class="p">[</span><span class="n">Space</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
+        <span class="n">_ParallaxTexture2</span><span class="p">(</span><span class="s">"Parallax Texture2"</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Black"</span><span class="p">{}</span>
+        <span class="n">_ParallaxDepth2</span><span class="p">(</span><span class="s">"Parallax Depth2"</span><span class="p">,</span><span class="n">Float</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">_FlowVector2AndSpeed</span><span class="p">(</span><span class="s">"FlowVector2AndSpeed"</span><span class="p">,</span><span class="n">Vector</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        
+        <span class="c1">// 新增第三层</span>
+        <span class="p">[</span><span class="n">Space</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
+        <span class="n">_ParallaxTexture3</span><span class="p">(</span><span class="s">"Parallax Texture3"</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Black"</span><span class="p">{}</span>
+        <span class="n">_ParallaxDepth3</span><span class="p">(</span><span class="s">"Parallax Depth3"</span><span class="p">,</span><span class="n">Float</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">_FlowVector3AndSpeed</span><span class="p">(</span><span class="s">"FlowVector3AndSpeed"</span><span class="p">,</span><span class="n">Vector</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+        
+        <span class="p">[</span><span class="n">Space</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
+        <span class="n">_BackTexture</span><span class="p">(</span><span class="s">"_BackTexture"</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Black"</span><span class="p">{}</span>
+    <span class="p">}</span>
+    <span class="n">SubShader</span>
+    <span class="p">{</span>
+        <span class="n">Tags</span> <span class="p">{</span><span class="s">"RenderPipeline"</span> <span class="o">=</span> <span class="s">"UniversalRenderPipeline"</span> <span class="s">"Queue"</span> <span class="o">=</span> <span class="s">"Geometry"</span> <span class="s">"RenderType"</span> <span class="o">=</span> <span class="s">"ReplaceMePlease"</span> <span class="s">"ForceNoShadowCasting"</span> <span class="o">=</span> <span class="s">"false"</span> <span class="s">"DisableBatching"</span> <span class="o">=</span> <span class="s">"False"</span> <span class="s">"IgnoreProjector"</span> <span class="o">=</span> <span class="s">"False"</span> <span class="s">"PreviewType"</span> <span class="o">=</span> <span class="s">"Plane"</span><span class="p">}</span>
+        <span class="n">LOD</span> <span class="mi">100</span>
+ 
+        <span class="n">Pass</span>
+        <span class="p">{</span>
+            <span class="n">Cull</span> <span class="n">Off</span>
+            
+            <span class="n">CGPROGRAM</span>
+            <span class="cp">#pragma vertex vert
+</span>            <span class="cp">#pragma fragment frag
+</span>
+            <span class="cp">#include</span> <span class="cpf">"CommonCgInclude.cginc"</span><span class="cp">
+</span>            <span class="cp">#include</span> <span class="cpf">"UnityCG.cginc"</span><span class="cp">
+</span> 
+            <span class="n">V2FData</span> <span class="n">vert</span> <span class="p">(</span><span class="n">MeshData</span> <span class="kr">input</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">V2FData</span> <span class="kr">output</span> <span class="o">=</span> <span class="n">FillBaseV2FData</span><span class="p">(</span><span class="kr">input</span><span class="p">);</span>
+                <span class="k">return</span> <span class="kr">output</span><span class="p">;</span>
+            <span class="p">}</span>
+ 
+            <span class="kt">sampler2D</span> <span class="n">_FrameTexture</span><span class="p">;</span>
+            <span class="n">float4</span> <span class="n">_FrameTexture_ST</span><span class="p">;</span>
+            
+            <span class="kt">sampler2D</span> <span class="n">_ParallaxTexture1</span><span class="p">;</span>
+            <span class="n">float4</span> <span class="n">_ParallaxTexture1_ST</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">_ParallaxDepth1</span><span class="p">;</span>
+            
+            <span class="kt">sampler2D</span> <span class="n">_ParallaxTexture2</span><span class="p">;</span>
+            <span class="n">float4</span> <span class="n">_ParallaxTexture2_ST</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">_ParallaxDepth2</span><span class="p">;</span>
+            <span class="n">vector</span> <span class="n">_FlowVector2AndSpeed</span><span class="p">;</span>
+
+            <span class="kt">sampler2D</span> <span class="n">_ParallaxTexture3</span><span class="p">;</span>
+            <span class="n">float4</span> <span class="n">_ParallaxTexture3_ST</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">_ParallaxDepth3</span><span class="p">;</span>
+            <span class="n">vector</span> <span class="n">_FlowVector3AndSpeed</span><span class="p">;</span>
+ 
+            <span class="kt">sampler2D</span> <span class="n">_BackTexture</span><span class="p">;</span>
+            <span class="n">float4</span> <span class="n">_BackTexture_ST</span><span class="p">;</span>
+ 
+            <span class="n">float2</span> <span class="n">CalculateRealUVAfterDepth</span><span class="p">(</span><span class="n">float2</span> <span class="n">originUV</span><span class="p">,</span> <span class="n">float3</span> <span class="n">viewDirTS</span><span class="p">,</span> <span class="kt">float</span> <span class="n">depth</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="kt">float</span> <span class="n">cosTheta</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">normalize</span><span class="p">(</span><span class="n">viewDirTS</span><span class="p">),</span> <span class="n">float3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span> 
+                <span class="kt">float</span> <span class="n">dis</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">/</span> <span class="n">cosTheta</span><span class="p">;</span>
+                <span class="n">float3</span> <span class="n">originUVPoint</span> <span class="o">=</span> <span class="n">float3</span><span class="p">(</span><span class="n">originUV</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                <span class="n">float3</span> <span class="n">afrerDepthUVPoint</span> <span class="o">=</span> <span class="n">originUVPoint</span> <span class="o">+</span> <span class="n">normalize</span><span class="p">(</span><span class="n">viewDirTS</span><span class="p">)</span> <span class="o">*</span> <span class="n">dis</span><span class="p">;</span>
+                <span class="k">return</span> <span class="n">afrerDepthUVPoint</span><span class="p">.</span><span class="n">xy</span><span class="p">;</span>
+            <span class="p">}</span>
+            
+ 
+            <span class="n">fixed4</span> <span class="n">frag</span> <span class="p">(</span><span class="n">V2FData</span> <span class="kr">input</span><span class="p">,</span><span class="kt">float</span> <span class="n">backFace</span><span class="o">:</span><span class="n">VFace</span><span class="p">)</span> <span class="o">:</span> <span class="n">SV_Target</span>
+            <span class="p">{</span>
+                
+                <span class="n">float3</span> <span class="n">tangentWS</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="kr">input</span><span class="p">.</span><span class="n">tangentWS</span><span class="p">);</span>
+                <span class="n">float3</span> <span class="n">normalWS</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="kr">input</span><span class="p">.</span><span class="n">normalWS</span><span class="p">);</span>
+                <span class="n">float3</span> <span class="n">bitangentWS</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="kr">input</span><span class="p">.</span><span class="n">bitangentWS</span><span class="p">);</span>
+ 
+                <span class="n">float3</span> <span class="n">lightDirWS</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">UnityWorldSpaceLightDir</span><span class="p">(</span><span class="kr">input</span><span class="p">.</span><span class="n">posWS</span><span class="p">.</span><span class="n">xyz</span><span class="p">));</span>
+                <span class="n">float3</span> <span class="n">viewDirWS</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">UnityWorldSpaceViewDir</span><span class="p">(</span><span class="kr">input</span><span class="p">.</span><span class="n">posWS</span><span class="p">.</span><span class="n">xyz</span><span class="p">));</span>
+ 
+                <span class="n">float2</span> <span class="n">uv</span> <span class="o">=</span> <span class="kr">input</span><span class="p">.</span><span class="n">uv</span><span class="p">;</span>
+ 
+                <span class="c1">//背面</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">backFace</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">float2</span> <span class="n">backUV</span> <span class="o">=</span> <span class="n">float2</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">uv</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="n">uv</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+                    <span class="n">float4</span> <span class="n">backTextureSample</span> <span class="o">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_BackTexture</span><span class="p">,</span><span class="n">backUV</span><span class="o">*</span><span class="n">_BackTexture_ST</span><span class="p">.</span><span class="n">xy</span> <span class="o">+</span> <span class="n">_BackTexture_ST</span><span class="p">.</span><span class="n">zw</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="n">backTextureSample</span><span class="p">;</span>
+                <span class="p">}</span>
+ 
+                <span class="n">float3x3</span> <span class="n">TBN_WS2TS</span> <span class="o">=</span> <span class="n">float3x3</span><span class="p">(</span><span class="n">tangentWS</span><span class="p">,</span><span class="n">bitangentWS</span><span class="p">,</span><span class="n">normalWS</span><span class="p">);</span>  <span class="c1">//  世界-》切线变换矩阵</span>
+                <span class="n">float3</span> <span class="n">viewDirTS</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="n">TBN_WS2TS</span><span class="p">,</span> <span class="n">viewDirWS</span><span class="p">);</span>
+                <span class="c1">//为什么需要在切线空间计算呢？因为深度值是相对于切线空间定义的</span>
+                <span class="c1">//计算经深度值影响过后的uv</span>
+                <span class="n">float2</span> <span class="n">uv1AfterDepth</span> <span class="o">=</span> <span class="n">CalculateRealUVAfterDepth</span><span class="p">(</span><span class="n">uv</span><span class="p">,</span> <span class="n">viewDirTS</span><span class="p">,</span> <span class="n">_ParallaxDepth1</span><span class="p">);</span>
+                <span class="n">float2</span> <span class="n">uv2AfterDepth</span> <span class="o">=</span> <span class="n">CalculateRealUVAfterDepth</span><span class="p">(</span><span class="n">uv</span><span class="p">,</span> <span class="n">viewDirTS</span><span class="p">,</span> <span class="n">_ParallaxDepth2</span><span class="p">);</span>
+                <span class="n">float2</span> <span class="n">uv3AfterDepth</span> <span class="o">=</span> <span class="n">CalculateRealUVAfterDepth</span><span class="p">(</span><span class="n">uv</span><span class="p">,</span> <span class="n">viewDirTS</span><span class="p">,</span> <span class="n">_ParallaxDepth3</span><span class="p">);</span>
+ 
+                <span class="c1">//采样第一层</span>
+                <span class="n">uv1AfterDepth</span> <span class="o">=</span> <span class="n">saturate</span><span class="p">(</span><span class="n">uv1AfterDepth</span><span class="p">);</span>
+                <span class="n">float4</span> <span class="n">_ParallaxTexture1Sample</span> <span class="o">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_ParallaxTexture1</span><span class="p">,</span><span class="n">uv1AfterDepth</span><span class="o">*</span><span class="n">_ParallaxTexture1_ST</span><span class="p">.</span><span class="n">xy</span> <span class="o">+</span> <span class="n">_ParallaxTexture1_ST</span><span class="p">.</span><span class="n">zw</span><span class="p">);</span>
+ 
+                <span class="c1">//采样第二层</span>
+                <span class="n">uv2AfterDepth</span> <span class="o">+=</span> <span class="o">-</span><span class="n">_FlowVector2AndSpeed</span><span class="p">.</span><span class="n">xy</span> <span class="o">*</span> <span class="n">_Time</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">_FlowVector2AndSpeed</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+                <span class="n">float4</span> <span class="n">_ParallaxTexture2Sample</span> <span class="o">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_ParallaxTexture2</span><span class="p">,</span><span class="n">uv2AfterDepth</span><span class="o">*</span><span class="n">_ParallaxTexture2_ST</span><span class="p">.</span><span class="n">xy</span> <span class="o">+</span> <span class="n">_ParallaxTexture2_ST</span><span class="p">.</span><span class="n">zw</span><span class="p">);</span>
+                
+                <span class="c1">// 采样第三层（带流动效果）</span>
+                <span class="n">uv3AfterDepth</span> <span class="o">+=</span> <span class="o">-</span><span class="n">_FlowVector3AndSpeed</span><span class="p">.</span><span class="n">xy</span> <span class="o">*</span> <span class="n">_Time</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">_FlowVector3AndSpeed</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+                <span class="n">float4</span> <span class="n">_ParallaxTexture3Sample</span> <span class="o">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_ParallaxTexture3</span><span class="p">,</span> <span class="n">uv3AfterDepth</span><span class="o">*</span><span class="n">_ParallaxTexture3_ST</span><span class="p">.</span><span class="n">xy</span> <span class="o">+</span> <span class="n">_ParallaxTexture3_ST</span><span class="p">.</span><span class="n">zw</span><span class="p">);</span>
+ 
+                <span class="c1">//采样边框</span>
+                <span class="n">float4</span> <span class="n">_FrameTextureSample</span> <span class="o">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_FrameTexture</span><span class="p">,</span><span class="n">uv</span><span class="o">*</span><span class="n">_FrameTexture_ST</span><span class="p">.</span><span class="n">xy</span> <span class="o">+</span> <span class="n">_FrameTexture_ST</span><span class="p">.</span><span class="n">zw</span><span class="p">);</span>
+                
+                <span class="n">float4</span> <span class="n">finalCol</span> <span class="o">=</span> <span class="n">float4</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+                <span class="n">finalCol</span> <span class="o">=</span> <span class="n">_ParallaxTexture3Sample</span><span class="p">;</span>
+                <span class="n">finalCol</span> <span class="o">=</span> <span class="n">lerp</span><span class="p">(</span><span class="n">finalCol</span><span class="p">,</span> <span class="n">_ParallaxTexture2Sample</span><span class="p">,</span> <span class="n">_ParallaxTexture2Sample</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
+                <span class="n">finalCol</span> <span class="o">=</span> <span class="n">lerp</span><span class="p">(</span><span class="n">finalCol</span><span class="p">,</span><span class="n">_ParallaxTexture1Sample</span><span class="p">,</span><span class="n">_ParallaxTexture1Sample</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
+                <span class="c1">// finalCol += _FrameTextureSample;</span>
+                <span class="n">finalCol</span> <span class="o">=</span> <span class="n">lerp</span><span class="p">(</span><span class="n">finalCol</span><span class="p">,</span><span class="n">_FrameTextureSample</span><span class="p">,</span><span class="n">_FrameTextureSample</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
+ 
+                <span class="k">return</span> <span class="n">finalCol</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">ENDCG</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+</code></pre></div></div> </body></html>
