@@ -10,7 +10,8 @@ children:
   # - title: divider
   # - title: projects
   #   permalink: /projects/
-  - title: workflow
+  - title: 新闻
+    permalink: /news/
   - title: blog
     permalink: /blog/
 ---
