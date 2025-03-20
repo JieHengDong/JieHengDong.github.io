@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Unity与luban表交互
-date: 2025-03-20 10:14:00
-description: 尝试自定义luban表导出
-tags: Unity Workflow
+title: Unity与Luban表交互
+date: 2025-03-20 20:33:46
+description: luban表自定义相关
+tags: Unity Workflow 
 categories: 
 giscus_comments: false
 related_posts: false
