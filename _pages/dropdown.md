@@ -12,6 +12,6 @@ children:
   #   permalink: /projects/
   - title: 新闻
     permalink: /news/
-  - title: blog
+  - title: 博客
     permalink: /blog/
 ---

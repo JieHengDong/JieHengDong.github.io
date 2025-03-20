@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: 关于我
 permalink: /
 subtitle: 记录日常积累的博客
 
