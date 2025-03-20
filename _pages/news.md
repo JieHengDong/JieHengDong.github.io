@@ -1,6 +1,6 @@
 ---
 layout: page
-title: news
+title: 摘抄
 permalink: /news/
 ---
 

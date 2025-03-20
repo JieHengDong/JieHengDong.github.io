@@ -1,6 +1,6 @@
 ---
 layout: page
-title: submenus
+title: 更多
 nav: true
 nav_order: 8
 dropdown: true
@@ -10,7 +10,7 @@ children:
   # - title: divider
   # - title: projects
   #   permalink: /projects/
-  - title: 新闻
+  - title: 摘抄
     permalink: /news/
   - title: 博客
     permalink: /blog/

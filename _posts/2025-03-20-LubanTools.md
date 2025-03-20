@@ -67,5 +67,14 @@ pause
 	<service name="server" manager="Tables" group="s"/>
 	<service name="client" manager="Tables" group="c"/>
 	<service name="all" manager="Tables" group="c,s,e"/>
-    
+
 </root>
+```
+
+实际上luban提供了修改模板的途径 
+
+``` c
+ Luban/DataTemplates/cs-simple-json/table.tpl
+ ```
+
+ 还可以支持Table接口类继承自定义的ILubanTables 实现异步加载, 本地化校验之类的额外功能
