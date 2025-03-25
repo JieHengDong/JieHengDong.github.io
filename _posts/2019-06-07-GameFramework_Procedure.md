@@ -14,5 +14,5 @@ toc:
 # 流程图
 
 <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/Procedure_Flow.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/Procedure_Flow.jpg" class="img-fluid rounded z-depth-1" %}
 </div>
