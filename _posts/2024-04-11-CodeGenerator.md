@@ -3,8 +3,8 @@ layout: post
 title: 预制体生成UI脚本
 date: 2024-04-11 20:14:00
 description: 自动化相关
-tags: Unity Workflow Automation
-categories: 
+tags: Unity Automation
+categories: Workflow
 giscus_comments: false
 related_posts: false
 toc:

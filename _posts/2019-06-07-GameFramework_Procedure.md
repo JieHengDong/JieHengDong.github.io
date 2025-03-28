@@ -4,7 +4,7 @@ title: GameFramework Procedure
 date: 2019-06-07 16:53:53
 description: 流程相关
 tags: GameFramework
-categories: distill formatting
+categories: GameFramework
 giscus_comments: false
 related_posts: false
 toc:
