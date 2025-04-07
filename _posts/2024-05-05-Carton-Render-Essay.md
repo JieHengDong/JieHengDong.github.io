@@ -3,8 +3,8 @@ layout: post
 title: 卡通渲染的一些思路
 date: 2024-05-05 20:14:00
 description: 卡通渲染随笔
-tags: Unity UnFinsh
-categories: 
+tags: Unity 
+categories: UnFinsh
 giscus_comments: false
 related_posts: false
 toc:
