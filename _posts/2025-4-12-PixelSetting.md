@@ -2,9 +2,9 @@
 layout: post
 title: 解决Unity导入像素图模糊
 date: 2025-04-12 11:29:09
-description: 一些AABB优化思路
+description: 图片导入优化
 tags: Unity 
-categories: UnFinsh
+categories: Workflow
 giscus_comments: false
 related_posts: false
 toc:
