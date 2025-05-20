@@ -20,6 +20,7 @@ toc:
 ## 自动化
 
 在右键菜单注册
+
 ```c#
 [MenuItem("Assets/UIView from Prefab", false, 1)]
 ```
@@ -89,7 +90,6 @@ private static void AssignChildrenComponents(Transform parent, StringBuilder cod
         }
     }
 ```
-
 
 <mark>部分代码是框架内代码，请自行替换</mark>
 

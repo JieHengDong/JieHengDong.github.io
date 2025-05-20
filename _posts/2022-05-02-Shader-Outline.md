@@ -4,7 +4,7 @@ title: Outline Shader/ 2D图片描边
 date: 2022-05-02 14:42:53
 description: 实现描边的一些坑
 tags: Shader
-categories: 
+categories:
 giscus_comments: false
 related_posts: false
 toc:
@@ -91,5 +91,3 @@ Shader "UICustom/Outline"
 ## 新的问题
 
 由于UI图大量的透明通道清理不足，应该透明度为0的地方，有零星几个像素alpha值不统一(无法用alpha值小于约定值来实现，单纯是图片没有清理过)
-
-    

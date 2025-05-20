@@ -3,7 +3,7 @@ layout: post
 title: 主程之路
 date: 2019-06-07 15:53:53
 description: 相关文章导航用
-tags: 
+tags:
 categories: distill formatting
 giscus_comments: false
 related_posts: false
@@ -13,4 +13,4 @@ toc:
 
 ## 目录
 
-* Unity导出原生AAR嵌入原生 [Pinterest](https://jiehengdong.github.io/blog/2024/Unity-Export-Android-AAR/)
+- Unity导出原生AAR嵌入原生 [Pinterest](https://jiehengdong.github.io/blog/2024/Unity-Export-Android-AAR/)
