@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://jiehengdong.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://jiehengdong.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-05-20T02:59:26+00:00</updated><id>https://jiehengdong.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">解决Unity导入像素图模糊</title><link href="https://jiehengdong.github.io/blog/2025/PixelSetting/" rel="alternate" type="text/html" title="解决Unity导入像素图模糊"/><published>2025-04-12T11:29:09+00:00</published><updated>2025-04-12T11:29:09+00:00</updated><id>https://jiehengdong.github.io/blog/2025/PixelSetting</id><content type="html" xml:base="https://jiehengdong.github.io/blog/2025/PixelSetting/"><![CDATA[<h1 id="前情提要">前情提要</h1> <p>想导入像素画进Unity中，进行图片缩放时发现不仅图片模糊，而且有明显的颜色失真和边缘模糊</p> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <img src="/assets/img/PixelSetting/BlurredPixel.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </div> <h2 id="颜色失真">颜色失真</h2> <p>是因为Unity导入图片时默认会压缩，这种压缩算法类似于周围像素取方差，所以RGB值也会修改</p> <ul> <li>修改图片Inspector中Compression选择None，也就是不进行压缩</li> </ul> <h2 id="边缘模糊">边缘模糊</h2> <p>跟Unity采样模式有关系</p> <ul> <li>修改图片Inspector中Filter Mode中Point(no filter)</li> </ul> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <img src="/assets/img/PixelSetting/PixelSetting.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </div> <h2 id="图片缩放">图片缩放</h2> <p>尽量不用unity中Scale来进行缩放，修改图片Inspector中Pixels Per Unit 比例</p> <ul> <li>PPU = 图片的像素宽度 / Unity 单位宽度</li> </ul>]]></content><author><name></name></author><category term="Workflow"/><category term="Unity"/><summary type="html"><![CDATA[图片导入优化]]></summary></entry><entry><title type="html">AABB在小物体凸多边形的情况下优化</title><link href="https://jiehengdong.github.io/blog/2025/AABB/" rel="alternate" type="text/html" title="AABB在小物体凸多边形的情况下优化"/><published>2025-04-03T14:30:39+00:00</published><updated>2025-04-03T14:30:39+00:00</updated><id>https://jiehengdong.github.io/blog/2025/AABB</id><content type="html" xml:base="https://jiehengdong.github.io/blog/2025/AABB/"><![CDATA[<h1 id="aabb">AABB</h1> <p>常用于空间内检测碰撞使用</p> <h2 id="剔除">剔除</h2> <p>在空间内自左向右排序，满足“可能碰撞区间”(X轴上A.right &gt; B.Left)再对碰撞区间内的物体进行AABB检测</p> <ul> <li>可以减少运算量</li> </ul>]]></content><author><name></name></author><category term="UnFinsh"/><category term="Unity"/><summary type="html"><![CDATA[一些AABB优化思路]]></summary></entry><entry><title type="html">Unity与Luban表交互</title><link href="https://jiehengdong.github.io/blog/2025/LubanTools/" rel="alternate" type="text/html" title="Unity与Luban表交互"/><published>2025-03-20T20:33:46+00:00</published><updated>2025-03-20T20:33:46+00:00</updated><id>https://jiehengdong.github.io/blog/2025/LubanTools</id><content type="html" xml:base="https://jiehengdong.github.io/blog/2025/LubanTools/"><![CDATA[<h1 id="鲁班表">鲁班表</h1> <h2 id="前情提要">前情提要</h2> <p>最近项目上需要接入鲁班表来导出bena和protobuf,但是按照他样例给的只能实现简单的json导出,离支持热更和自定义命名空间还很远</p> <pre><code class="language-DOS">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://jiehengdong.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://jiehengdong.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-05-20T03:17:26+00:00</updated><id>https://jiehengdong.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">解决Unity导入像素图模糊</title><link href="https://jiehengdong.github.io/blog/2025/PixelSetting/" rel="alternate" type="text/html" title="解决Unity导入像素图模糊"/><published>2025-04-12T11:29:09+00:00</published><updated>2025-04-12T11:29:09+00:00</updated><id>https://jiehengdong.github.io/blog/2025/PixelSetting</id><content type="html" xml:base="https://jiehengdong.github.io/blog/2025/PixelSetting/"><![CDATA[<h1 id="前情提要">前情提要</h1> <p>想导入像素画进Unity中，进行图片缩放时发现不仅图片模糊，而且有明显的颜色失真和边缘模糊</p> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <img src="/assets/img/PixelSetting/BlurredPixel.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </div> <h2 id="颜色失真">颜色失真</h2> <p>是因为Unity导入图片时默认会压缩，这种压缩算法类似于周围像素取方差，所以RGB值也会修改</p> <ul> <li>修改图片Inspector中Compression选择None，也就是不进行压缩</li> </ul> <h2 id="边缘模糊">边缘模糊</h2> <p>跟Unity采样模式有关系</p> <ul> <li>修改图片Inspector中Filter Mode中Point(no filter)</li> </ul> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <img src="/assets/img/PixelSetting/PixelSetting.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </div> <h2 id="图片缩放">图片缩放</h2> <p>尽量不用unity中Scale来进行缩放，修改图片Inspector中Pixels Per Unit 比例</p> <ul> <li>PPU = 图片的像素宽度 / Unity 单位宽度</li> </ul>]]></content><author><name></name></author><category term="Workflow"/><category term="Unity"/><summary type="html"><![CDATA[图片导入优化]]></summary></entry><entry><title type="html">AABB在小物体凸多边形的情况下优化</title><link href="https://jiehengdong.github.io/blog/2025/AABB/" rel="alternate" type="text/html" title="AABB在小物体凸多边形的情况下优化"/><published>2025-04-03T14:30:39+00:00</published><updated>2025-04-03T14:30:39+00:00</updated><id>https://jiehengdong.github.io/blog/2025/AABB</id><content type="html" xml:base="https://jiehengdong.github.io/blog/2025/AABB/"><![CDATA[<h1 id="aabb">AABB</h1> <p>常用于空间内检测碰撞使用</p> <h2 id="剔除">剔除</h2> <p>在空间内自左向右排序，满足“可能碰撞区间”(X轴上A.right &gt; B.Left)再对碰撞区间内的物体进行AABB检测</p> <ul> <li>可以减少运算量</li> </ul>]]></content><author><name></name></author><category term="UnFinsh"/><category term="Unity"/><summary type="html"><![CDATA[一些AABB优化思路]]></summary></entry><entry><title type="html">Unity与Luban表交互</title><link href="https://jiehengdong.github.io/blog/2025/LubanTools/" rel="alternate" type="text/html" title="Unity与Luban表交互"/><published>2025-03-20T20:33:46+00:00</published><updated>2025-03-20T20:33:46+00:00</updated><id>https://jiehengdong.github.io/blog/2025/LubanTools</id><content type="html" xml:base="https://jiehengdong.github.io/blog/2025/LubanTools/"><![CDATA[<h1 id="鲁班表">鲁班表</h1> <h2 id="前情提要">前情提要</h2> <p>最近项目上需要接入鲁班表来导出bena和protobuf,但是按照他样例给的只能实现简单的json导出,离支持热更和自定义命名空间还很远</p> <pre><code class="language-DOS">
 set WORKSPACE=..
 set LUBAN_DLL=Tools\Luban\Luban.dll
 set CONF_ROOT=.
@@ -17,7 +17,7 @@ pause
 &lt;root&gt;
 
 	&lt;topmodule name="Game.Hotfix.Cfg"/&gt;
-    
+
     &lt;option name="editor.topmodule" value="Game.Cfg"/&gt;
 
 	&lt;patch name="cn"/&gt;
@@ -28,13 +28,13 @@ pause
 	&lt;group name="c" default="1"/&gt; client
 	&lt;group name="s" default="1"/&gt; server
 	&lt;group name="e" default="1"/&gt; editor
-	
+
 	&lt;import name="."/&gt;
-	
+
 	&lt;importexcel name="__tables__.xlsx" type="table"/&gt; 相对data目录
 	&lt;importexcel name="__enums__.xlsx" type="enum"/&gt;相对data目录
 	&lt;importexcel name="__beans__.xlsx" type="bean"/&gt;相对data目录
-	
+
 	&lt;externalselector name="unity_cs"/&gt;
 	&lt;externalselector name="ue_cpp"/&gt;
     &lt;externalselector name="dotnet_cs"/&gt;
@@ -51,22 +51,22 @@ pause
     <span class="p">{</span>
         <span class="p">[</span><span class="n">Space</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
         <span class="n">_FrameTexture</span><span class="p">(</span><span class="s">"FrameTexture"</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Black"</span><span class="p">{}</span>
-        
+
         <span class="p">[</span><span class="n">Space</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
         <span class="n">_ParallaxTexture1</span><span class="p">(</span><span class="s">"Parallax Texture1"</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Black"</span><span class="p">{}</span>
         <span class="n">_ParallaxDepth1</span><span class="p">(</span><span class="s">"Parallax Depth1"</span><span class="p">,</span><span class="n">Float</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
-        
+
         <span class="p">[</span><span class="n">Space</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
         <span class="n">_ParallaxTexture2</span><span class="p">(</span><span class="s">"Parallax Texture2"</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Black"</span><span class="p">{}</span>
         <span class="n">_ParallaxDepth2</span><span class="p">(</span><span class="s">"Parallax Depth2"</span><span class="p">,</span><span class="n">Float</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">_FlowVector2AndSpeed</span><span class="p">(</span><span class="s">"FlowVector2AndSpeed"</span><span class="p">,</span><span class="n">Vector</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-        
+
         <span class="c1">// 新增第三层</span>
         <span class="p">[</span><span class="n">Space</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
         <span class="n">_ParallaxTexture3</span><span class="p">(</span><span class="s">"Parallax Texture3"</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Black"</span><span class="p">{}</span>
         <span class="n">_ParallaxDepth3</span><span class="p">(</span><span class="s">"Parallax Depth3"</span><span class="p">,</span><span class="n">Float</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">_FlowVector3AndSpeed</span><span class="p">(</span><span class="s">"FlowVector3AndSpeed"</span><span class="p">,</span><span class="n">Vector</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
-        
+
         <span class="p">[</span><span class="n">Space</span><span class="p">(</span><span class="mi">50</span><span class="p">)]</span>
         <span class="n">_BackTexture</span><span class="p">(</span><span class="s">"_BackTexture"</span><span class="p">,</span><span class="mi">2</span><span class="n">D</span><span class="p">)</span> <span class="o">=</span> <span class="s">"Black"</span><span class="p">{}</span>
     <span class="p">}</span>
@@ -74,31 +74,31 @@ pause
     <span class="p">{</span>
         <span class="n">Tags</span> <span class="p">{</span><span class="s">"RenderPipeline"</span> <span class="o">=</span> <span class="s">"UniversalRenderPipeline"</span> <span class="s">"Queue"</span> <span class="o">=</span> <span class="s">"Geometry"</span> <span class="s">"RenderType"</span> <span class="o">=</span> <span class="s">"ReplaceMePlease"</span> <span class="s">"ForceNoShadowCasting"</span> <span class="o">=</span> <span class="s">"false"</span> <span class="s">"DisableBatching"</span> <span class="o">=</span> <span class="s">"False"</span> <span class="s">"IgnoreProjector"</span> <span class="o">=</span> <span class="s">"False"</span> <span class="s">"PreviewType"</span> <span class="o">=</span> <span class="s">"Plane"</span><span class="p">}</span>
         <span class="n">LOD</span> <span class="mi">100</span>
- 
+
         <span class="n">Pass</span>
         <span class="p">{</span>
             <span class="n">Cull</span> <span class="n">Off</span>
-            
+
             <span class="n">CGPROGRAM</span>
             <span class="cp">#pragma vertex vert
 </span>            <span class="cp">#pragma fragment frag
 </span>
             <span class="cp">#include</span> <span class="cpf">"CommonCgInclude.cginc"</span><span class="cp">
 </span>            <span class="cp">#include</span> <span class="cpf">"UnityCG.cginc"</span><span class="cp">
-</span> 
+</span>
             <span class="n">V2FData</span> <span class="n">vert</span> <span class="p">(</span><span class="n">MeshData</span> <span class="kr">input</span><span class="p">)</span>
             <span class="p">{</span>
                 <span class="n">V2FData</span> <span class="kr">output</span> <span class="o">=</span> <span class="n">FillBaseV2FData</span><span class="p">(</span><span class="kr">input</span><span class="p">);</span>
                 <span class="k">return</span> <span class="kr">output</span><span class="p">;</span>
             <span class="p">}</span>
- 
+
             <span class="kt">sampler2D</span> <span class="n">_FrameTexture</span><span class="p">;</span>
             <span class="n">float4</span> <span class="n">_FrameTexture_ST</span><span class="p">;</span>
-            
+
             <span class="kt">sampler2D</span> <span class="n">_ParallaxTexture1</span><span class="p">;</span>
             <span class="n">float4</span> <span class="n">_ParallaxTexture1_ST</span><span class="p">;</span>
             <span class="kt">float</span> <span class="n">_ParallaxDepth1</span><span class="p">;</span>
-            
+
             <span class="kt">sampler2D</span> <span class="n">_ParallaxTexture2</span><span class="p">;</span>
             <span class="n">float4</span> <span class="n">_ParallaxTexture2_ST</span><span class="p">;</span>
             <span class="kt">float</span> <span class="n">_ParallaxDepth2</span><span class="p">;</span>
@@ -108,32 +108,32 @@ pause
             <span class="n">float4</span> <span class="n">_ParallaxTexture3_ST</span><span class="p">;</span>
             <span class="kt">float</span> <span class="n">_ParallaxDepth3</span><span class="p">;</span>
             <span class="n">vector</span> <span class="n">_FlowVector3AndSpeed</span><span class="p">;</span>
- 
+
             <span class="kt">sampler2D</span> <span class="n">_BackTexture</span><span class="p">;</span>
             <span class="n">float4</span> <span class="n">_BackTexture_ST</span><span class="p">;</span>
- 
+
             <span class="n">float2</span> <span class="n">CalculateRealUVAfterDepth</span><span class="p">(</span><span class="n">float2</span> <span class="n">originUV</span><span class="p">,</span> <span class="n">float3</span> <span class="n">viewDirTS</span><span class="p">,</span> <span class="kt">float</span> <span class="n">depth</span><span class="p">)</span>
             <span class="p">{</span>
-                <span class="kt">float</span> <span class="n">cosTheta</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">normalize</span><span class="p">(</span><span class="n">viewDirTS</span><span class="p">),</span> <span class="n">float3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span> 
+                <span class="kt">float</span> <span class="n">cosTheta</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">normalize</span><span class="p">(</span><span class="n">viewDirTS</span><span class="p">),</span> <span class="n">float3</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
                 <span class="kt">float</span> <span class="n">dis</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">/</span> <span class="n">cosTheta</span><span class="p">;</span>
                 <span class="n">float3</span> <span class="n">originUVPoint</span> <span class="o">=</span> <span class="n">float3</span><span class="p">(</span><span class="n">originUV</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
                 <span class="n">float3</span> <span class="n">afrerDepthUVPoint</span> <span class="o">=</span> <span class="n">originUVPoint</span> <span class="o">+</span> <span class="n">normalize</span><span class="p">(</span><span class="n">viewDirTS</span><span class="p">)</span> <span class="o">*</span> <span class="n">dis</span><span class="p">;</span>
                 <span class="k">return</span> <span class="n">afrerDepthUVPoint</span><span class="p">.</span><span class="n">xy</span><span class="p">;</span>
             <span class="p">}</span>
-            
- 
+
+
             <span class="n">fixed4</span> <span class="n">frag</span> <span class="p">(</span><span class="n">V2FData</span> <span class="kr">input</span><span class="p">,</span><span class="kt">float</span> <span class="n">backFace</span><span class="o">:</span><span class="n">VFace</span><span class="p">)</span> <span class="o">:</span> <span class="n">SV_Target</span>
             <span class="p">{</span>
-                
+
                 <span class="n">float3</span> <span class="n">tangentWS</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="kr">input</span><span class="p">.</span><span class="n">tangentWS</span><span class="p">);</span>
                 <span class="n">float3</span> <span class="n">normalWS</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="kr">input</span><span class="p">.</span><span class="n">normalWS</span><span class="p">);</span>
                 <span class="n">float3</span> <span class="n">bitangentWS</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="kr">input</span><span class="p">.</span><span class="n">bitangentWS</span><span class="p">);</span>
- 
+
                 <span class="n">float3</span> <span class="n">lightDirWS</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">UnityWorldSpaceLightDir</span><span class="p">(</span><span class="kr">input</span><span class="p">.</span><span class="n">posWS</span><span class="p">.</span><span class="n">xyz</span><span class="p">));</span>
                 <span class="n">float3</span> <span class="n">viewDirWS</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">UnityWorldSpaceViewDir</span><span class="p">(</span><span class="kr">input</span><span class="p">.</span><span class="n">posWS</span><span class="p">.</span><span class="n">xyz</span><span class="p">));</span>
- 
+
                 <span class="n">float2</span> <span class="n">uv</span> <span class="o">=</span> <span class="kr">input</span><span class="p">.</span><span class="n">uv</span><span class="p">;</span>
- 
+
                 <span class="c1">//背面</span>
                 <span class="k">if</span><span class="p">(</span><span class="n">backFace</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span>
                 <span class="p">{</span>
@@ -141,7 +141,7 @@ pause
                     <span class="n">float4</span> <span class="n">backTextureSample</span> <span class="o">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_BackTexture</span><span class="p">,</span><span class="n">backUV</span><span class="o">*</span><span class="n">_BackTexture_ST</span><span class="p">.</span><span class="n">xy</span> <span class="o">+</span> <span class="n">_BackTexture_ST</span><span class="p">.</span><span class="n">zw</span><span class="p">);</span>
                     <span class="k">return</span> <span class="n">backTextureSample</span><span class="p">;</span>
                 <span class="p">}</span>
- 
+
                 <span class="n">float3x3</span> <span class="n">TBN_WS2TS</span> <span class="o">=</span> <span class="n">float3x3</span><span class="p">(</span><span class="n">tangentWS</span><span class="p">,</span><span class="n">bitangentWS</span><span class="p">,</span><span class="n">normalWS</span><span class="p">);</span>  <span class="c1">//  世界-》切线变换矩阵</span>
                 <span class="n">float3</span> <span class="n">viewDirTS</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="n">TBN_WS2TS</span><span class="p">,</span> <span class="n">viewDirWS</span><span class="p">);</span>
                 <span class="c1">//为什么需要在切线空间计算呢？因为深度值是相对于切线空间定义的</span>
@@ -149,29 +149,29 @@ pause
                 <span class="n">float2</span> <span class="n">uv1AfterDepth</span> <span class="o">=</span> <span class="n">CalculateRealUVAfterDepth</span><span class="p">(</span><span class="n">uv</span><span class="p">,</span> <span class="n">viewDirTS</span><span class="p">,</span> <span class="n">_ParallaxDepth1</span><span class="p">);</span>
                 <span class="n">float2</span> <span class="n">uv2AfterDepth</span> <span class="o">=</span> <span class="n">CalculateRealUVAfterDepth</span><span class="p">(</span><span class="n">uv</span><span class="p">,</span> <span class="n">viewDirTS</span><span class="p">,</span> <span class="n">_ParallaxDepth2</span><span class="p">);</span>
                 <span class="n">float2</span> <span class="n">uv3AfterDepth</span> <span class="o">=</span> <span class="n">CalculateRealUVAfterDepth</span><span class="p">(</span><span class="n">uv</span><span class="p">,</span> <span class="n">viewDirTS</span><span class="p">,</span> <span class="n">_ParallaxDepth3</span><span class="p">);</span>
- 
+
                 <span class="c1">//采样第一层</span>
                 <span class="n">uv1AfterDepth</span> <span class="o">=</span> <span class="n">saturate</span><span class="p">(</span><span class="n">uv1AfterDepth</span><span class="p">);</span>
                 <span class="n">float4</span> <span class="n">_ParallaxTexture1Sample</span> <span class="o">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_ParallaxTexture1</span><span class="p">,</span><span class="n">uv1AfterDepth</span><span class="o">*</span><span class="n">_ParallaxTexture1_ST</span><span class="p">.</span><span class="n">xy</span> <span class="o">+</span> <span class="n">_ParallaxTexture1_ST</span><span class="p">.</span><span class="n">zw</span><span class="p">);</span>
- 
+
                 <span class="c1">//采样第二层</span>
                 <span class="n">uv2AfterDepth</span> <span class="o">+=</span> <span class="o">-</span><span class="n">_FlowVector2AndSpeed</span><span class="p">.</span><span class="n">xy</span> <span class="o">*</span> <span class="n">_Time</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">_FlowVector2AndSpeed</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
                 <span class="n">float4</span> <span class="n">_ParallaxTexture2Sample</span> <span class="o">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_ParallaxTexture2</span><span class="p">,</span><span class="n">uv2AfterDepth</span><span class="o">*</span><span class="n">_ParallaxTexture2_ST</span><span class="p">.</span><span class="n">xy</span> <span class="o">+</span> <span class="n">_ParallaxTexture2_ST</span><span class="p">.</span><span class="n">zw</span><span class="p">);</span>
-                
+
                 <span class="c1">// 采样第三层（带流动效果）</span>
                 <span class="n">uv3AfterDepth</span> <span class="o">+=</span> <span class="o">-</span><span class="n">_FlowVector3AndSpeed</span><span class="p">.</span><span class="n">xy</span> <span class="o">*</span> <span class="n">_Time</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">_FlowVector3AndSpeed</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
                 <span class="n">float4</span> <span class="n">_ParallaxTexture3Sample</span> <span class="o">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_ParallaxTexture3</span><span class="p">,</span> <span class="n">uv3AfterDepth</span><span class="o">*</span><span class="n">_ParallaxTexture3_ST</span><span class="p">.</span><span class="n">xy</span> <span class="o">+</span> <span class="n">_ParallaxTexture3_ST</span><span class="p">.</span><span class="n">zw</span><span class="p">);</span>
- 
+
                 <span class="c1">//采样边框</span>
                 <span class="n">float4</span> <span class="n">_FrameTextureSample</span> <span class="o">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_FrameTexture</span><span class="p">,</span><span class="n">uv</span><span class="o">*</span><span class="n">_FrameTexture_ST</span><span class="p">.</span><span class="n">xy</span> <span class="o">+</span> <span class="n">_FrameTexture_ST</span><span class="p">.</span><span class="n">zw</span><span class="p">);</span>
-                
+
                 <span class="n">float4</span> <span class="n">finalCol</span> <span class="o">=</span> <span class="n">float4</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
                 <span class="n">finalCol</span> <span class="o">=</span> <span class="n">_ParallaxTexture3Sample</span><span class="p">;</span>
                 <span class="n">finalCol</span> <span class="o">=</span> <span class="n">lerp</span><span class="p">(</span><span class="n">finalCol</span><span class="p">,</span> <span class="n">_ParallaxTexture2Sample</span><span class="p">,</span> <span class="n">_ParallaxTexture2Sample</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
                 <span class="n">finalCol</span> <span class="o">=</span> <span class="n">lerp</span><span class="p">(</span><span class="n">finalCol</span><span class="p">,</span><span class="n">_ParallaxTexture1Sample</span><span class="p">,</span><span class="n">_ParallaxTexture1Sample</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
                 <span class="c1">// finalCol += _FrameTextureSample;</span>
                 <span class="n">finalCol</span> <span class="o">=</span> <span class="n">lerp</span><span class="p">(</span><span class="n">finalCol</span><span class="p">,</span><span class="n">_FrameTextureSample</span><span class="p">,</span><span class="n">_FrameTextureSample</span><span class="p">.</span><span class="n">a</span><span class="p">);</span>
- 
+
                 <span class="k">return</span> <span class="n">finalCol</span><span class="p">;</span>
             <span class="p">}</span>
             <span class="n">ENDCG</span>
@@ -257,21 +257,21 @@ pause
         <span class="n">_MovingSlider</span> <span class="p">(</span><span class="s">"Moving Slider"</span><span class="p">,</span> <span class="n">RANGE</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="o">=</span> <span class="mi">10</span>
         <span class="n">_Extrude</span><span class="p">(</span><span class="s">"Extrude Amount"</span><span class="p">,</span> <span class="n">RANGE</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="o">=</span> <span class="mi">10</span>
         <span class="n">_WireFrameStay</span> <span class="p">(</span><span class="s">"Wire Stay"</span><span class="p">,</span> <span class="n">RANGE</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">=</span> <span class="mi">0</span>
- 
+
     <span class="p">}</span>
     <span class="n">SubShader</span>
     <span class="p">{</span>
         <span class="n">Tags</span> <span class="p">{</span><span class="s">"RenderType"</span> <span class="o">=</span> <span class="s">"Opaque"</span> <span class="s">"RenderPipeline"</span> <span class="o">=</span> <span class="s">"UniversalPipeline"</span> <span class="p">}</span>
         <span class="n">LOD</span> <span class="mi">100</span>
- 
+
         <span class="n">Pass</span>
         <span class="p">{</span>
             <span class="c1">// Wireframe shader based on the the following</span>
             <span class="c1">// http://developer.download.nvidia.com/SDK/10/direct3d/Source/SolidWireframe/Doc/SolidWireframe.pdf</span>
- 
+
             <span class="n">HLSLPROGRAM</span>
             <span class="cp">#pragma require geometry
-</span> 
+</span>
             <span class="cp">#pragma vertex vert
 </span>            <span class="cp">#pragma geometry geom
 </span>            <span class="cp">#pragma fragment frag
@@ -279,17 +279,17 @@ pause
 </span>            <span class="c1">// -------------------------------------</span>
             <span class="c1">// Unity defined keywords</span>
             <span class="cp">#pragma multi_compile_instancing
-</span> 
+</span>
             <span class="cp">#include</span> <span class="cpf">"Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"</span><span class="cp">
 </span>        <span class="c1">//    #include "UnlitInput.hlsl"</span>
- 
+
             <span class="kt">float</span> <span class="n">_WireThickness</span><span class="p">;</span>
             <span class="n">float4</span> <span class="n">_WireColor</span><span class="p">;</span>
             <span class="kt">sampler2D</span> <span class="n">_MainTex</span><span class="p">;</span>
             <span class="kt">float</span> <span class="n">_MovingSlider</span><span class="p">;</span>
             <span class="kt">float</span> <span class="n">_Extrude</span><span class="p">;</span>
             <span class="kt">float</span> <span class="n">_WireFrameStay</span><span class="p">;</span>
- 
+
             <span class="k">struct</span> <span class="n">Attributes</span>
             <span class="p">{</span>
                 <span class="n">float4</span> <span class="n">positionOS</span>       <span class="o">:</span> <span class="n">POSITION</span><span class="p">;</span>
@@ -297,7 +297,7 @@ pause
                 <span class="n">float4</span> <span class="n">uv</span> <span class="o">:</span> <span class="n">TEXCOORD0</span><span class="p">;</span>
                 <span class="n">float3</span> <span class="n">normal</span> <span class="o">:</span><span class="n">NORMAL</span><span class="p">;</span>
             <span class="p">};</span>
- 
+
             <span class="k">struct</span> <span class="n">v2g</span>
             <span class="p">{</span>
                 <span class="n">float4</span> <span class="n">projectionSpaceVertex</span> <span class="o">:</span> <span class="n">SV_POSITION</span><span class="p">;</span>
@@ -305,14 +305,14 @@ pause
                 <span class="kt">float</span> <span class="n">movingPos</span> <span class="o">:</span> <span class="n">TEXCOORD1</span><span class="p">;</span>
                 <span class="n">UNITY_VERTEX_OUTPUT_STEREO</span>
             <span class="p">};</span>
- 
+
             <span class="n">v2g</span> <span class="n">vert</span><span class="p">(</span><span class="n">Attributes</span> <span class="kr">input</span><span class="p">)</span>
             <span class="p">{</span>
                 <span class="n">v2g</span> <span class="kr">output</span> <span class="o">=</span> <span class="p">(</span><span class="n">v2g</span><span class="p">)</span><span class="mi">0</span><span class="p">;</span>
- 
+
                 <span class="n">UNITY_SETUP_INSTANCE_ID</span><span class="p">(</span><span class="kr">input</span><span class="p">);</span>
                 <span class="n">UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO</span><span class="p">(</span><span class="kr">output</span><span class="p">);</span>
- 
+
                 <span class="c1">// move over the mesh y axis using a slider</span>
                 <span class="c1">// with option to invert</span>
                 <span class="cp">#if INVERT
@@ -327,7 +327,7 @@ pause
                 <span class="kr">output</span><span class="p">.</span><span class="n">movingPos</span> <span class="o">=</span> <span class="n">movingPos</span><span class="p">;</span>
                 <span class="k">return</span> <span class="kr">output</span><span class="p">;</span>
             <span class="p">}</span>
- 
+
             <span class="k">struct</span> <span class="n">g2f</span>
             <span class="p">{</span>
                 <span class="n">float4</span> <span class="n">projectionSpaceVertex</span> <span class="o">:</span> <span class="n">SV_POSITION</span><span class="p">;</span>
@@ -336,20 +336,20 @@ pause
                 <span class="kt">float</span> <span class="n">movingPos</span> <span class="o">:</span> <span class="n">TEXCOORD2</span><span class="p">;</span>
                 <span class="n">UNITY_VERTEX_OUTPUT_STEREO</span>
             <span class="p">};</span>
- 
+
             <span class="p">[</span><span class="n">maxvertexcount</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
             <span class="kt">void</span> <span class="n">geom</span><span class="p">(</span><span class="n">triangle</span> <span class="n">v2g</span> <span class="n">i</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="k">inout</span> <span class="n">TriangleStream</span><span class="o">&lt;</span><span class="n">g2f</span><span class="o">&gt;</span> <span class="n">triangleStream</span><span class="p">)</span>
             <span class="p">{</span>
                 <span class="n">UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX</span><span class="p">(</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
- 
+
                 <span class="n">float2</span> <span class="n">p0</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">projectionSpaceVertex</span><span class="p">.</span><span class="n">xy</span> <span class="o">/</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">projectionSpaceVertex</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
                 <span class="n">float2</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">projectionSpaceVertex</span><span class="p">.</span><span class="n">xy</span> <span class="o">/</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">projectionSpaceVertex</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
                 <span class="n">float2</span> <span class="n">p2</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">projectionSpaceVertex</span><span class="p">.</span><span class="n">xy</span> <span class="o">/</span> <span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">projectionSpaceVertex</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
- 
+
                 <span class="n">float2</span> <span class="n">edge0</span> <span class="o">=</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">p1</span><span class="p">;</span>
                 <span class="n">float2</span> <span class="n">edge1</span> <span class="o">=</span> <span class="n">p2</span> <span class="o">-</span> <span class="n">p0</span><span class="p">;</span>
                 <span class="n">float2</span> <span class="n">edge2</span> <span class="o">=</span> <span class="n">p1</span> <span class="o">-</span> <span class="n">p0</span><span class="p">;</span>
- 
+
                 <span class="c1">// To find the distance to the opposite edge, we take the</span>
                 <span class="c1">// formula for finding the area of a triangle Area = Base/2 * Height,</span>
                 <span class="c1">// and solve for the Height = (Area * 2)/Base.</span>
@@ -358,7 +358,7 @@ pause
                 <span class="c1">// since our cross product will already be double our area.</span>
                 <span class="kt">float</span> <span class="n">area</span> <span class="o">=</span> <span class="n">abs</span><span class="p">(</span><span class="n">edge1</span><span class="p">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">edge2</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">edge1</span><span class="p">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">edge2</span><span class="p">.</span><span class="n">x</span><span class="p">);</span>
                 <span class="kt">float</span> <span class="n">wireThickness</span> <span class="o">=</span> <span class="mi">800</span> <span class="o">-</span> <span class="n">_WireThickness</span><span class="p">;</span>
- 
+
                 <span class="n">g2f</span> <span class="n">o</span><span class="p">;</span>
                 <span class="n">UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO</span><span class="p">(</span><span class="n">o</span><span class="p">);</span>
                 <span class="n">o</span><span class="p">.</span><span class="n">projectionSpaceVertex</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">projectionSpaceVertex</span><span class="p">;</span>
@@ -367,14 +367,14 @@ pause
                 <span class="n">o</span><span class="p">.</span><span class="n">uv</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">uv</span><span class="p">;</span>
                 <span class="n">o</span><span class="p">.</span><span class="n">movingPos</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">movingPos</span><span class="p">;</span>
                 <span class="n">triangleStream</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">o</span><span class="p">);</span>
- 
+
                 <span class="n">o</span><span class="p">.</span><span class="n">projectionSpaceVertex</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">projectionSpaceVertex</span><span class="p">;</span>
                 <span class="n">o</span><span class="p">.</span><span class="n">dist</span><span class="p">.</span><span class="n">xyz</span> <span class="o">=</span> <span class="n">float3</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">area</span> <span class="o">/</span> <span class="n">length</span><span class="p">(</span><span class="n">edge1</span><span class="p">)),</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">o</span><span class="p">.</span><span class="n">projectionSpaceVertex</span><span class="p">.</span><span class="n">w</span> <span class="o">*</span> <span class="n">wireThickness</span><span class="p">;</span>
                 <span class="n">o</span><span class="p">.</span><span class="n">dist</span><span class="p">.</span><span class="n">w</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="o">/</span> <span class="n">o</span><span class="p">.</span><span class="n">projectionSpaceVertex</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
                 <span class="n">o</span><span class="p">.</span><span class="n">uv</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">uv</span><span class="p">;</span>
                 <span class="n">o</span><span class="p">.</span><span class="n">movingPos</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">movingPos</span><span class="p">;</span>
                 <span class="n">triangleStream</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">o</span><span class="p">);</span>
- 
+
                 <span class="n">o</span><span class="p">.</span><span class="n">projectionSpaceVertex</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">projectionSpaceVertex</span><span class="p">;</span>
                 <span class="n">o</span><span class="p">.</span><span class="n">dist</span><span class="p">.</span><span class="n">xyz</span> <span class="o">=</span> <span class="n">float3</span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">area</span> <span class="o">/</span> <span class="n">length</span><span class="p">(</span><span class="n">edge2</span><span class="p">)))</span> <span class="o">*</span> <span class="n">o</span><span class="p">.</span><span class="n">projectionSpaceVertex</span><span class="p">.</span><span class="n">w</span> <span class="o">*</span> <span class="n">wireThickness</span><span class="p">;</span>
                 <span class="n">o</span><span class="p">.</span><span class="n">dist</span><span class="p">.</span><span class="n">w</span> <span class="o">=</span> <span class="mi">1</span><span class="p">.</span><span class="mi">0</span> <span class="o">/</span> <span class="n">o</span><span class="p">.</span><span class="n">projectionSpaceVertex</span><span class="p">.</span><span class="n">w</span><span class="p">;</span>
@@ -382,12 +382,12 @@ pause
                 <span class="n">o</span><span class="p">.</span><span class="n">movingPos</span> <span class="o">=</span> <span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">movingPos</span><span class="p">;</span>
                 <span class="n">triangleStream</span><span class="p">.</span><span class="n">Append</span><span class="p">(</span><span class="n">o</span><span class="p">);</span>
             <span class="p">}</span>
- 
+
             <span class="n">half4</span> <span class="n">frag</span><span class="p">(</span><span class="n">g2f</span> <span class="n">i</span><span class="p">)</span> <span class="o">:</span> <span class="n">SV_Target</span>
             <span class="p">{</span>
                 <span class="kt">float</span> <span class="n">minDistanceToEdge</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">dist</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">min</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">dist</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span><span class="p">.</span><span class="n">dist</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span> <span class="o">*</span> <span class="n">i</span><span class="p">.</span><span class="n">dist</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
                 <span class="n">float4</span> <span class="n">mainTex</span> <span class="o">=</span> <span class="n">tex2D</span><span class="p">(</span><span class="n">_MainTex</span><span class="p">,</span> <span class="n">i</span><span class="p">.</span><span class="n">uv</span><span class="p">.</span><span class="n">xy</span><span class="p">);</span>
- 
+
                 <span class="c1">// show texture where there is no wireframe</span>
                 <span class="c1">// also fades the wireframe over the moving position</span>
                 <span class="k">if</span><span class="p">(</span><span class="n">minDistanceToEdge</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">.</span><span class="mi">9</span><span class="o">*</span> <span class="mi">1</span><span class="o">-</span> <span class="n">saturate</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">movingPos</span> <span class="o">-</span> <span class="n">_WireFrameStay</span><span class="p">))</span>
@@ -403,7 +403,7 @@ pause
             <span class="n">ENDHLSL</span>
         <span class="p">}</span>
     <span class="p">}</span>
- 
+
     <span class="n">FallBack</span> <span class="s">"Hidden/Universal Render Pipeline/FallbackError"</span>
 <span class="p">}</span>
 </code></pre></div></div>]]></content><author><name></name></author><category term="Shader"/><summary type="html"><![CDATA[溶解效果的记录]]></summary></entry><entry><title type="html">Unity导出原生AAR嵌入原生</title><link href="https://jiehengdong.github.io/blog/2024/Unity-Export-Android-AAR/" rel="alternate" type="text/html" title="Unity导出原生AAR嵌入原生"/><published>2024-04-01T10:14:00+00:00</published><updated>2024-04-01T10:14:00+00:00</updated><id>https://jiehengdong.github.io/blog/2024/Unity-Export-Android-AAR</id><content type="html" xml:base="https://jiehengdong.github.io/blog/2024/Unity-Export-Android-AAR/"><![CDATA[<h2 id="unity原生接入">Unity原生接入</h2> <p>为了更好的适应跨平台的开发需求，需要Unity结合原生开发</p> <ul> <li>环境 Unity 2022.3.21f1f1</li> </ul> <h3 id="unity导出设置">Unity导出设置</h3> <p>切换当前平台到对应平台，这里用安卓平台举例</p> <p>切换当前平台到对应安卓平台，如果未安装安卓插件去 Unityhub/Installs/your Editor/Add moudles</p> <p>进入项目设置</p> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <img src="/assets/img/Unity_Setting.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </div> <p>具体目标平台根据项目需求选择，ScriptingBackend 选择IL2CPP</p> <p>使用Android studio 打开(软件安装等不赘述)</p> <h3 id="原生项目设置">原生项目设置</h3> <p>原生项目结构</p> <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">launcher</span><span class="pi">:</span>
@@ -429,15 +429,15 @@ pause
       <span class="nt">&lt;meta-data</span> <span class="na">android:name=</span><span class="s">"unityplayer.UnityActivity"</span> <span class="na">android:value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
       <span class="nt">&lt;meta-data</span> <span class="na">android:name=</span><span class="s">"notch_support"</span> <span class="na">android:value=</span><span class="s">"true"</span> <span class="nt">/&gt;</span>
     <span class="nt">&lt;/activity&gt;</span>
-</code></pre></div></div> <h3 id="gradle-导出">Gradle 导出</h3> <p>根据自己项目设置使用Gradle导出AAR包，提供给原生接入</p>]]></content><author><name></name></author><category term="Unity"/><category term="Workflow"/><summary type="html"><![CDATA[与原生交互相关]]></summary></entry><entry><title type="html">三平面映射</title><link href="https://jiehengdong.github.io/blog/2023/Shader-Triplanar-Mapping/" rel="alternate" type="text/html" title="三平面映射"/><published>2023-07-18T19:42:23+00:00</published><updated>2023-07-18T19:42:23+00:00</updated><id>https://jiehengdong.github.io/blog/2023/Shader-Triplanar-Mapping</id><content type="html" xml:base="https://jiehengdong.github.io/blog/2023/Shader-Triplanar-Mapping/"><![CDATA[<h2 id="前情提要">前情提要</h2> <p>根据点云数据生成的地形在套用材质时候，Y轴拉伸异常</p> <h2 id="理论">理论</h2> <p>一般材质只是根据二维平面采样，如Y轴的XZ平面，在地形高低差过大就会拉伸。</p> <p>所以我们需要从三个平面来投射UV</p> <ul> <li>XZ世界坐标的UV投影 Y</li> <li>ZY世界坐标的UV投影 X</li> <li>XY世界坐标的UV投影 Z <blockquote> <p>PS: 还能解决材质球无缝的问题</p> </blockquote> </li> </ul> <h2 id="代码">代码</h2> <div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Shader</span> <span class="s">"CustomShader/Triplanar"</span> 
+</code></pre></div></div> <h3 id="gradle-导出">Gradle 导出</h3> <p>根据自己项目设置使用Gradle导出AAR包，提供给原生接入</p>]]></content><author><name></name></author><category term="Unity"/><category term="Workflow"/><summary type="html"><![CDATA[与原生交互相关]]></summary></entry><entry><title type="html">三平面映射</title><link href="https://jiehengdong.github.io/blog/2023/Shader-Triplanar-Mapping/" rel="alternate" type="text/html" title="三平面映射"/><published>2023-07-18T19:42:23+00:00</published><updated>2023-07-18T19:42:23+00:00</updated><id>https://jiehengdong.github.io/blog/2023/Shader-Triplanar-Mapping</id><content type="html" xml:base="https://jiehengdong.github.io/blog/2023/Shader-Triplanar-Mapping/"><![CDATA[<h2 id="前情提要">前情提要</h2> <p>根据点云数据生成的地形在套用材质时候，Y轴拉伸异常</p> <h2 id="理论">理论</h2> <p>一般材质只是根据二维平面采样，如Y轴的XZ平面，在地形高低差过大就会拉伸。</p> <p>所以我们需要从三个平面来投射UV</p> <ul> <li>XZ世界坐标的UV投影 Y</li> <li>ZY世界坐标的UV投影 X</li> <li>XY世界坐标的UV投影 Z <blockquote> <p>PS: 还能解决材质球无缝的问题</p> </blockquote> </li> </ul> <h2 id="代码">代码</h2> <div class="language-glsl highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Shader</span> <span class="s">"CustomShader/Triplanar"</span>
 <span class="p">{</span>
-	<span class="n">Properties</span> 
+	<span class="n">Properties</span>
 	<span class="p">{</span>
 		<span class="n">_DiffuseMap</span> <span class="p">(</span><span class="s">"Diffuse Map "</span><span class="p">,</span> <span class="mi">2</span><span class="n">D</span><span class="p">)</span>  <span class="o">=</span> <span class="s">"white"</span> <span class="p">{}</span>
 		<span class="n">_TextureScale</span> <span class="p">(</span><span class="s">"Texture Scale"</span><span class="p">,</span><span class="kt">float</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
 		<span class="n">_TriplanarBlendSharpness</span> <span class="p">(</span><span class="s">"Blend Sharpness"</span><span class="p">,</span><span class="kt">float</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
 	<span class="p">}</span>
-	<span class="n">SubShader</span> 
+	<span class="n">SubShader</span>
 	<span class="p">{</span>
 		<span class="n">Tags</span> <span class="p">{</span> <span class="s">"RenderType"</span><span class="o">=</span><span class="s">"Opaque"</span> <span class="p">}</span>
 		<span class="n">LOD</span> <span class="mi">200</span>
@@ -454,9 +454,9 @@ pause
 		<span class="p">{</span>
 			<span class="n">float3</span> <span class="n">worldPos</span><span class="p">;</span>
 			<span class="n">float3</span> <span class="n">worldNormal</span><span class="p">;</span>
-		<span class="p">};</span> 
+		<span class="p">};</span>
 
-		<span class="kt">void</span> <span class="n">surf</span> <span class="p">(</span><span class="n">Input</span> <span class="n">IN</span><span class="p">,</span> <span class="k">inout</span> <span class="n">SurfaceOutput</span> <span class="n">o</span><span class="p">)</span> 
+		<span class="kt">void</span> <span class="n">surf</span> <span class="p">(</span><span class="n">Input</span> <span class="n">IN</span><span class="p">,</span> <span class="k">inout</span> <span class="n">SurfaceOutput</span> <span class="n">o</span><span class="p">)</span>
 		<span class="p">{</span>
 
 			<span class="n">half2</span> <span class="n">yUV</span> <span class="o">=</span> <span class="n">IN</span><span class="p">.</span><span class="n">worldPos</span><span class="p">.</span><span class="n">xz</span> <span class="o">/</span> <span class="n">_TextureScale</span><span class="p">;</span>
